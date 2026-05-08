@@ -1,5 +1,9 @@
 import express from "express";
 import { shopifyApp } from "@shopify/shopify-app-express";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
@@ -20,7 +24,12 @@ const shopify = shopifyApp({
 });
 
 app.use(express.json());
+app.use(express.static(join(__dirname, "../public")));
 app.use(shopify);
+
+app.get("/etsy-agent", (req, res) => {
+  res.sendFile(join(__dirname, "../public/etsy-agent.html"));
+});
 
 app.get("/", async (req, res) => {
   const { shop } = req.query;
