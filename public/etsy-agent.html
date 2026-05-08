@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etsy AI Agent Prompt — Autistic Adults Niche</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f7f4ef;
+    --sage: #7a9e7e;
+    --lavender: #b8acd4;
+    --warm: #e8b89a;
+    --rust: #c0614a;
+    --muted: #8a8a9a;
+    --border: #d8d4cc;
+    --highlight: #f0ebe0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    padding: 0 0 80px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,172,212,0.25) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 20px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(122,158,126,0.2) 0%, transparent 70%);
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--lavender);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    max-width: 480px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--warm);
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(247,244,239,0.65);
+    max-width: 400px;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* SECTION HEADERS */
+  .section {
+    margin-top: 48px;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+  }
+
+  /* PROMPT BLOCKS */
+  .prompt-block {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .prompt-block .block-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .prompt-block .block-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .prompt-block p, .prompt-block li {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: rgba(247,244,239,0.88);
+  }
+  .prompt-block ul {
+    padding-left: 18px;
+    margin-top: 8px;
+  }
+  .prompt-block li {
+    margin-bottom: 4px;
+  }
+  .prompt-block strong {
+    color: var(--warm);
+    font-weight: 600;
+  }
+
+  /* HIGHLIGHT CARDS */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .card {
+    background: var(--highlight);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .card-body {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* PRICING TABLE */
+  .price-table {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .price-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    align-items: center;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-row.header {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .price-row:not(.header):hover {
+    background: var(--highlight);
+  }
+  .price-tag {
+    font-weight: 600;
+    color: var(--rust);
+  }
+  .market-tag {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* INLINE CODE / TAGS */
+  .tag {
+    display: inline-block;
+    background: var(--lavender);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 2px;
+  }
+  .tag.sage { background: var(--sage); color: white; }
+  .tag.rust { background: var(--rust); color: white; }
+  .tag.warm { background: var(--warm); color: var(--ink); }
+
+  /* NOTICE BOX */
+  .notice {
+    border-left: 3px solid var(--rust);
+    background: rgba(192,97,74,0.07);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .notice strong { color: var(--rust); }
+
+  /* WORKFLOW STEPS */
+  .steps {
+    counter-reset: step;
+    margin-bottom: 20px;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    margin-bottom: 18px;
+    align-items: start;
+  }
+  .step-num {
+    counter-increment: step;
+    width: 40px;
+    height: 40px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content .step-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+  .step-content .step-body {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* FULL PROMPT TEXTAREA STYLE */
+  .full-prompt {
+    background: #f0f0f8;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #333;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .copy-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 60px;
+    padding: 30px 24px;
+    background: var(--ink);
+    color: rgba(247,244,239,0.5);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 500px) {
+    .hero { padding: 40px 24px 36px; }
+    .hero h1 { font-size: 28px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .price-row { grid-template-columns: 1.5fr 1fr 1fr; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Etsy Digital Shop · AI Agent System</div>
+  <h1>Your Daily Content Engine for <em>Autistic Adults</em></h1>
+  <p class="hero-sub">A complete agent prompt system to generate listings, PDF content, mockup prompts, and SEO copy — built around your existing shop.</p>
+</div>
+
+<div class="container">
+
+  <!-- MARKET INTEL -->
+  <div class="section">
+    <div class="section-label">Market Intelligence</div>
+    <div class="section-title">What's Winning in Your Niche</div>
+    <p style="margin-bottom:18px; color:var(--muted); font-size:13px;">Based on your Etsy screenshots, here's what the data shows about proven product types and pricing in the autistic adults digital download space.</p>
+
+    <div class="price-table">
+      <div class="price-row header">
+        <span>Product Type</span>
+        <span>Price Range</span>
+        <span>Competition</span>
+      </div>
+      <div class="price-row">
+        <span>Masking &amp; Burnout Workbooks</span>
+        <span class="price-tag">$4.99–$9.97</span>
+        <span class="market-tag">🔥 High demand</span>
+      </div>
+      <div class="price-row">
+        <span>Visual Routine Schedules</span>
+        <span class="price-tag">$2–$6</span>
+        <span class="market-tag">✅ Your lane</span>
+      </div>
+      <div class="price-row">
+        <span>Adulting Skill Bundles</span>
+        <span class="price-tag">$6–$19.49</span>
+        <span class="market-tag">📈 Growing</span>
+      </div>
+      <div class="price-row">
+        <span>Self-Advocacy Scripts</span>
+        <span class="price-tag">$4–$11.38</span>
+        <span class="market-tag">🟡 Low comp</span>
+      </div>
+      <div class="price-row">
+        <span>Sensory Regulation Toolkits</span>
+        <span class="price-tag">$5–$14</span>
+        <span class="market-tag">📈 Growing</span>
+      </div>
+      <div class="price-row">
+        <span>Executive Function Planners</span>
+        <span class="price-tag">$4.90–$15.99</span>
+        <span class="market-tag">🔥 High demand</span>
+      </div>
+      <div class="price-row">
+        <span>Neurodivergent Life Hacks / eBooks</span>
+        <span class="price-tag">$8–$13.95</span>
+        <span class="market-tag">🟡 Ads-heavy</span>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Your Sweet Spot:</strong> Your current listings ($2–$10) are priced at entry-level. The agent is tuned to help you also create mid-tier bundles ($12–$20) that can 3–4x revenue per customer without more traffic.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WHAT YOU NEED TO SET UP -->
+  <div class="section">
+    <div class="section-label">Setup (One Time)</div>
+    <div class="section-title">Tools You'll Need</div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <div class="card-title">Claude / ChatGPT</div>
+        <div class="card-body">Paste the agent prompt to generate listing copy + PDF content. Claude recommended for longer documents.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <div class="card-title">Canva Pro</div>
+        <div class="card-body">Build PDF worksheets + listing mockup images. Use the mockup prompt output from the agent as your design brief.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖼️</div>
+        <div class="card-title">Midjourney / DALL·E</div>
+        <div class="card-body">Optional. Agent outputs ready-to-use image prompts for lifestyle mockup photos of your printables.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏷️</div>
+        <div class="card-title">Etsy Seller Hub</div>
+        <div class="card-body">Manual ~10 min/day upload. Agent outputs everything pre-formatted — you paste and publish.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DAILY WORKFLOW -->
+  <div class="section">
+    <div class="section-label">Your Daily Routine</div>
+    <div class="section-title">The 10-Minute Upload System</div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Run the Agent (2 min)</div>
+          <div class="step-body">Open Claude. Paste the MASTER AGENT PROMPT below. Add today's topic input (or let the agent pick from the backlog queue it generates).</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Build the PDF in Canva (5 min)</div>
+          <div class="step-body">Use the agent's content output. Apply your saved Canva brand template. Export as PDF. The agent gives you all page copy pre-written.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Create Mockup Images (3 min)</div>
+          <div class="step-body">Use the agent's 4–5 image prompts in Canva's mockup generator or Midjourney. Agent specifies exact scene, props, and text overlays.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Paste &amp; Publish (3 min)</div>
+          <div class="step-body">Copy the agent's Etsy title, description, tags, and price into a new listing. Upload your PDF and images. Hit publish.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- THE MASTER PROMPT -->
+  <div class="section">
+    <div class="section-label">The Agent System</div>
+    <div class="section-title">Master Agent Prompt</div>
+    <p style="margin-bottom:16px; color:var(--muted); font-size:13px;">Copy this entire prompt into Claude or ChatGPT each session. Fill in the [BRACKETS] with your daily topic choice, or leave them blank and the agent will pick from a built-in content queue.</p>
+
+    <div class="copy-note">↓ Copy everything inside the box</div>
+    <div class="full-prompt">You are an expert Etsy digital product creator specializing in printable tools for autistic adults. You understand the autistic adult community deeply — including late diagnosis experiences, masking and burnout, sensory regulation, executive function challenges, and the desire for practical, non-clinical, shame-free tools.
+
+SHOP CONTEXT:
+- My Etsy shop sells digital downloads (PDF printables) for autistic and neurodivergent adults
+- My current listings include: visual routines (morning, bedtime, cleaning, sick day, workday, weekend), appointment prep, adulting bundles, and social scripts
+- My brand tone: calm, clear, direct, no-fluff, non-clinical, empowering — talks TO autistic adults, not ABOUT them
+- My price range: $2–$20 depending on depth
+- My visual style: clean, minimal, readable — large text, high contrast, generous white space, simple icons
+
+TODAY'S PRODUCT REQUEST:
+Topic: [LEAVE BLANK FOR AGENT TO CHOOSE, OR TYPE: e.g. "Sensory Regulation Toolkit" / "Meltdown Recovery Plan" / "Burnout Warning Signs Tracker"]
+Format: [PDF Worksheet / Workbook / Checklist / Planner / Visual Schedule / eBook / Bundle]
+Target price: [e.g. $4.99 / $8.00 / $12.00]
+
+-----
+
+STEP 1 — PRODUCT IDEATION (if topic is blank)
+Choose today's product from this priority queue based on market demand and gaps in my current shop:
+
+1. Autistic Burnout Early Warning Signs Tracker
+2. Sensory Overload Recovery Toolkit
+3. Executive Function Daily Planner (low-demand version)
+4. Social Battery Tracker + Recharge Menu
+5. Unmasking Journal Prompts (30 days)
+6. Meltdown vs. Shutdown: Understanding &amp; Recovery Guide
+7. Workplace Accommodations Request Scripts
+8. Autistic Self-Care Menu (sensory-friendly options)
+9. Interoception Check-In Cards
+10. Late Diagnosis Processing Workbook
+
+Tell me which one you chose and why (1–2 sentences), then proceed.
+
+-----
+
+STEP 2 — FULL PDF CONTENT
+Write the complete, print-ready content for this product. Include:
+
+- Product title (on the cover page)
+- Brief intro paragraph (2–3 sentences, warm and direct)
+- All worksheet sections, prompts, check boxes, or pages with full copy
+- A closing encouragement note (2 sentences max, non-toxic-positivity)
+- Canva layout note for each section: specify font size guidance, whether it's a full-page layout or split columns, and any suggested icon types
+
+Format the content clearly with [PAGE 1], [PAGE 2], etc. labels.
+
+Tone rules:
+✓ Talk to the reader as a capable adult
+✓ Use plain language, short sentences
+✓ No "just" or "simply" — those are condescending
+✓ Normalize struggle without catastrophizing
+✓ Identity-first language ("autistic person" not "person with autism") unless space requires otherwise
+
+-----
+
+STEP 3 — ETSY LISTING COPY
+
+A. TITLE (max 140 characters, front-load keywords):
+Write 3 title options. Format: [Primary Keyword] | [Secondary Benefit] | [Format] for Autistic Adults
+
+B. DESCRIPTION (500–700 words):
+Structure:
+- Hook line (what problem does this solve?)
+- "This printable is for you if…" (3–4 bullets)
+- What's inside (list every page/section)
+- How to use it (2–3 sentences)
+- File details (PDF, US Letter + A4, instant download)
+- Closing CTA
+
+Tone: warm, direct, plain language. No hype words like "amazing" or "life-changing."
+
+C. TAGS (13 tags, comma separated):
+Mix of: broad niche terms, specific product terms, long-tail buyer intent phrases
+Examples of good tags: autistic adult printable, autism burnout recovery, neurodivergent planner, ADHD autism worksheet, AuDHD tools, executive function printable
+
+D. SUGGESTED PRICE:
+Give a specific price and a 1-sentence rationale based on page count and market comps.
+
+E. CATEGORY: Digital Downloads > Patterns &amp; How To (or most relevant)
+
+-----
+
+STEP 4 — MOCKUP IMAGE BRIEF
+Write 5 product image briefs. For each image, specify:
+
+- Scene description (what's in the background/props)
+- What part of the product is shown
+- Text overlay (if any — keep under 6 words)
+- Mood/lighting
+
+Image 1: Hero cover shot
+Image 2: Inside spread (show 2 pages)
+Image 3: Lifestyle flat lay
+Image 4: Close-up detail shot
+Image 5: "What's included" graphic (list format on clean background)
+
+Also write a ready-to-use Midjourney prompt for Image 3 (the lifestyle flat lay).
+
+-----
+
+STEP 5 — CONTENT QUEUE UPDATE
+List the next 3 product ideas I should make this week (from the priority queue or new suggestions based on what we just made), with a one-line rationale for each.
+
+-----
+
+OUTPUT FORMAT:
+Use clear headers for each step. Use — dividers between steps. This output should be ready to act on immediately without editing.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MOCKUP PROMPT BANK -->
+  <div class="section">
+    <div class="section-label">Bonus Resource</div>
+    <div class="section-title">Reusable Mockup Prompt Templates</div>
+    <p style="margin-bottom:16px; color:var(--muted); font-size:13px;">Paste these into Midjourney or DALL·E 3 for lifestyle product images. Swap [PRODUCT NAME] for your actual file title.</p>
+
+    <div class="prompt-block">
+      <div class="block-label">Flat Lay — Calm Desk Scene</div>
+      <p>Overhead flat lay photograph of a printed worksheet titled "[PRODUCT NAME]" on a light linen surface, surrounded by a white ceramic mug of coffee, a single green plant sprig, and a fine-tip pen. Soft natural window light. Minimal Scandinavian aesthetic. Real photo quality, 4K, editorial lifestyle photography.</p>
+    </div>
+
+    <div class="prompt-block">
+      <div class="block-label">Tablet Mockup — Digital Version</div>
+      <p>An iPad Pro on a white marble desk displaying a clean pastel-toned printable worksheet called "[PRODUCT NAME]". Next to it: a small succulent, reading glasses, and a notebook. Warm afternoon light. Product photography, shallow depth of field.</p>
+    </div>
+
+    <div class="prompt-block">
+      <div class="block-label">Cozy Home Scene — Relatable User</div>
+      <p>A person's hands (no face shown) holding a printed [PRODUCT NAME] worksheet, sitting on a couch with a knit blanket. Warm indoor lighting. Candle on the side table. Cozy, safe, calm atmosphere. Authentic lifestyle photography, not stock-photo feeling.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SEO TAG BANK -->
+  <div class="section">
+    <div class="section-label">SEO Resource</div>
+    <div class="section-title">High-Performing Tag Bank</div>
+    <p style="margin-bottom:14px; color:var(--muted); font-size:13px;">Pull from these when building your 13 Etsy tags. Mix broad + specific + intent-based.</p>
+
+    <div style="margin-bottom:10px;">
+      <div class="copy-note">Broad Niche</div>
+      <span class="tag">autistic adult printable</span>
+      <span class="tag">neurodivergent tools</span>
+      <span class="tag">autism digital download</span>
+      <span class="tag">AuDHD printable</span>
+      <span class="tag">ADHD autism worksheet</span>
+    </div>
+    <div style="margin-bottom:10px;">
+      <div class="copy-note">High Intent</div>
+      <span class="tag sage">autism burnout recovery</span>
+      <span class="tag sage">autistic self care</span>
+      <span class="tag sage">executive function planner</span>
+      <span class="tag sage">sensory regulation tools</span>
+      <span class="tag sage">autism routine printable</span>
+    </div>
+    <div style="margin-bottom:10px;">
+      <div class="copy-note">Long-Tail / Specific</div>
+      <span class="tag warm">late diagnosed autism adult</span>
+      <span class="tag warm">autistic masking workbook</span>
+      <span class="tag warm">neurodivergent daily planner</span>
+      <span class="tag warm">autism life skills worksheet</span>
+      <span class="tag warm">autism unmasking journal</span>
+    </div>
+    <div>
+      <div class="copy-note">Evergreen Format Tags</div>
+      <span class="tag rust">instant download PDF</span>
+      <span class="tag rust">printable worksheet adult</span>
+      <span class="tag rust">fillable PDF printable</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- GAPS IN SHOP -->
+  <div class="section">
+    <div class="section-label">Strategic Gaps</div>
+    <div class="section-title">What Your Shop Is Missing (Priority Order)</div>
+    <p style="margin-bottom:16px; color:var(--muted); font-size:13px;">Your current listings are all $2–$6 single-page tools. These gaps represent higher-revenue, lower-competition opportunities the agent should build toward.</p>
+
+    <div class="prompt-block">
+      <div class="block-label">Priority 1 — Bundle Offer ($12–$20)</div>
+      <p>Your individual routine cards are priced at $2 each. A <strong>"Complete Autistic Adult Routine Bundle"</strong> combining 6–8 of them at $14–$16 would 7–8x the revenue per transaction. Bestseller potential within 30 days of launch based on comparable shops.</p>
+    </div>
+
+    <div class="prompt-block">
+      <div class="block-label">Priority 2 — Burnout/Masking Workbook ($5–$8)</div>
+      <p>The highest-rated listings in your niche (553 reviews at $4.99, 4.5k reviews at $5) are masking + burnout workbooks. You have <strong>nothing in this category</strong>. This is the #1 product to build next — 20–40 pages, comprehensive, replaces multiple smaller tools.</p>
+    </div>
+
+    <div class="prompt-block">
+      <div class="block-label">Priority 3 — Social / Self-Advocacy Scripts ($4–$11)</div>
+      <p>Only 1 competitor appears with a low review count, but the concept (fill-in-the-blank scripts for medical, workplace, family conversations) serves a real pain point. <strong>Low competition, high emotional value</strong> — a strong candidate for your second or third week of production.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Built for your Etsy shop · Autistic Adults Niche · Use daily with Claude or ChatGPT
+</div>
+
+</body>
+</html>
